@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Income")
+@Table(name = "incomes")
 @Entity
 public class Income extends BaseModel {
   private String title;
@@ -27,5 +27,5 @@ public class Income extends BaseModel {
   private User userID;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  private BankAccount bankAccountId;
+  private BankAccount bankAccountID;
 }

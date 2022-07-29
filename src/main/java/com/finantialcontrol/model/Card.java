@@ -19,15 +19,15 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "credit_card")
+@Table(name = "cards")
 @Entity
 public class Card extends BaseModel {
   private String name;
   private Date closingDate;
   @Digits(integer = 10, fraction = 2)
-  private BigDecimal limit;
+  private BigDecimal cardLimit;
   @ManyToOne(fetch = FetchType.LAZY)
   private User userID;
-  @OneToMany(mappedBy = "credit_card", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
   private List<Expense> expenseIDs;
 }

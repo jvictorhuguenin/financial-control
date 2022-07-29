@@ -17,7 +17,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "bank_account")
+@Table(name = "bank_accounts")
 @Entity
 public class BankAccount extends BaseModel {
   private String bankName;
@@ -25,11 +25,11 @@ public class BankAccount extends BaseModel {
   private BigDecimal balance;
 
   // Relations
-  @OneToMany(mappedBy = "bank_account", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "bankAccountID", cascade = CascadeType.ALL)
   private List<ExpenseLimit> expenseLimitIDs;
-  @OneToMany(mappedBy = "bank_account", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "bankAccountID", cascade = CascadeType.ALL)
   private List<Expense> expenseIds;
-  @OneToMany(mappedBy = "bank_account", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "bankAccountID", cascade = CascadeType.ALL)
   private List<Income> incomeIds;
   @ManyToOne
   private User userID;

@@ -14,22 +14,22 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 @Entity
 public class User extends BaseModel {
-  private String name;
+  private String firstName;
   private String lastName;
   private String email;
   private String hash;
   private Boolean enabled;
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL)
   private List<BankAccount> bankAccountIds;
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL)
   private List<Income> incomeIds;
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL)
   private List<Expense> expenseIds;
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL)
   private List<ExpenseLimit> expenseLimitIds;
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "userID", cascade = CascadeType.ALL)
   private List<Card> cardIds;
 }

@@ -13,10 +13,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "expense-limit")
+@Table(name = "expense_limits")
 @Entity
 public class ExpenseLimit extends BaseModel {
-  private Integer limit;
+  private Integer limitAmount;
   private Date limitDate;
   @ManyToOne
   private User userID;

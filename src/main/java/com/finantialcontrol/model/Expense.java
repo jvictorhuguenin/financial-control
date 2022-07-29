@@ -18,13 +18,17 @@ import org.hibernate.Hibernate;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name = "Expense")
+@Table(name = "expenses")
 public class Expense extends BaseModel {
   private String title;
   @Digits(integer = 10, fraction = 2)
   private BigDecimal value;
   @ManyToOne(fetch = FetchType.LAZY)
-  private Card cardID;
+  private Card card;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private Card bankAccountID;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private Card userID;
 
   @Override
   public boolean equals(Object o) {
