@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@Data
 @MappedSuperclass
 public abstract class BaseModel implements Serializable {
   @Id
