@@ -1,4 +1,4 @@
-package com.finantialcontrol.infrastructure.data.db.jpa.entities;
+package com.finantialcontrol.data.db.jpa.entities;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -32,5 +32,5 @@ public class BankAccount extends BaseModel {
   @OneToMany(mappedBy = "bankAccountID", cascade = CascadeType.ALL)
   private List<Income> incomeIds;
   @ManyToOne
-  private User userID;
+  private UserData userID;
 }
