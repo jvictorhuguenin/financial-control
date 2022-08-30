@@ -12,7 +12,7 @@ public class CreateUserOutputMapper {
     URI location = ServletUriComponentsBuilder
         .fromContextPath(httpServletRequest)
         .path("/Customer/{id}")
-        .buildAndExpand(user.getId().getId())
+        .buildAndExpand(user.getId().getNumber())
         .toUri();
 
     return ResponseEntity.created(location).body(new ApiResponse(true, "registered successfully"));

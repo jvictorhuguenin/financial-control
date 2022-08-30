@@ -34,7 +34,7 @@ public class UserData{
 
   public static UserData from(User user) {
     return new UserData(
-        user.getId().getId(),
+        user.getId().getNumber(),
         user.getFirstName(),
         user.getLastName(),
         user.getUsername(),
