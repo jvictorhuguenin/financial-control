@@ -2,11 +2,11 @@ package com.finantialcontrol.core.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.Value;
 
-@Setter
-@AllArgsConstructor
+@Value
 public class Identity {
-  private final Long id;
+  Long id;
 
   public Long getNumber() {
     return id;

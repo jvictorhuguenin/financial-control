@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserRepository{
 
   @Override
   public User save(User user) {
-    UserData userData = UserData.from(user);
+    final UserData userData = UserData.from(user);
     return repository.save(userData).fromThis();
   }
 

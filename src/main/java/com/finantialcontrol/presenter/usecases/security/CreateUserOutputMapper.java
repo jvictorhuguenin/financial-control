@@ -11,7 +11,7 @@ public class CreateUserOutputMapper {
   public static ResponseEntity<ApiResponse> map(User user, HttpServletRequest httpServletRequest) {
     URI location = ServletUriComponentsBuilder
         .fromContextPath(httpServletRequest)
-        .path("/Customer/{id}")
+        .path("/User/{id}")
         .buildAndExpand(user.getId().getNumber())
         .toUri();
 
