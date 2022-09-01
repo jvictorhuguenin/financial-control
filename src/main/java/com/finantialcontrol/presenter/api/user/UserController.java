@@ -1,45 +1,36 @@
 package com.finantialcontrol.presenter.api.user;
 
-import com.finantialcontrol.dtos.UserGetDto;
-import com.finantialcontrol.dtos.UserRegistrationDto;
-import com.finantialcontrol.service.UserService;
-import java.util.List;
+import com.finantialcontrol.core.usecases.UseCaseExecutor;
+import com.finantialcontrol.core.usecases.user.CreateUserUseCase;
+import com.finantialcontrol.presenter.api.entities.ApiResponse;
+import com.finantialcontrol.presenter.api.entities.SignUpRequest;
+import com.finantialcontrol.presenter.usecases.security.CreateUserInputMapper;
+import com.finantialcontrol.presenter.usecases.security.CreateUserOutputMapper;
+import java.util.concurrent.CompletableFuture;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+@Component
+public class UserController implements UserResource {
+  private final UseCaseExecutor useCaseExecutor;
+  private final CreateUserUseCase createUserUseCase;
+  private final CreateUserInputMapper createUserInputMapper;
 
-@RestController
-@RequestMapping("/users")
-public class UserController {
-
-  private final UserService userService;
-
-  @Autowired
-  public UserController(UserService userService) {
-    this.userService = userService;
+  public UserController(UseCaseExecutor useCaseExecutor, CreateUserUseCase createUserUseCase,
+                        CreateUserInputMapper createUserInputMapper) {
+    this.useCaseExecutor = useCaseExecutor;
+    this.createUserUseCase = createUserUseCase;
+    this.createUserInputMapper = createUserInputMapper;
   }
 
-  @GetMapping
-  public List<UserGetDto> getAllUsers(){
-    return userService.getAllUsers();
+  @Override
+  public CompletableFuture<ResponseEntity<ApiResponse>> signUp(SignUpRequest request,
+                                                               HttpServletRequest httpServletRequest) {
+    return useCaseExecutor.execute(
+        createUserUseCase,
+        createUserInputMapper.map(request),
+        (outputValues) -> CreateUserOutputMapper.map(outputValues.getUser(), httpServletRequest)
+    );
   }
-
-  @GetMapping("/{id}")
-  public UserGetDto getUser(@PathVariable final Long id){
-    return userService.getUser(id);
-  }
-
-  @PostMapping("/registry")
-  @ResponseStatus(code = HttpStatus.CREATED)
-  public void postUser(@RequestBody final UserRegistrationDto user){
-    userService.register(user);
-  }
-
 }

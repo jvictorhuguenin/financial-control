@@ -6,7 +6,7 @@ import com.finantialcontrol.core.usecases.UseCase;
 import lombok.Value;
 
 public class CreateUserUseCase extends UseCase<CreateUserUseCase.InputValues, CreateUserUseCase.OutputValues> {
-  private UserRepository repository;
+  private final UserRepository repository;
 
   public CreateUserUseCase(UserRepository userRepository) {
     this.repository = userRepository;

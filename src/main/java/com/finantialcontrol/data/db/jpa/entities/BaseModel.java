@@ -1,4 +1,4 @@
-package com.finantialcontrol.infrastructure.data.db.jpa.entities;
+package com.finantialcontrol.data.db.jpa.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

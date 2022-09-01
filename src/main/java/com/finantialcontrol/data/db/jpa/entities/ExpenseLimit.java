@@ -1,4 +1,4 @@
-package com.finantialcontrol.infrastructure.data.db.jpa.entities;
+package com.finantialcontrol.data.db.jpa.entities;
 
 import java.util.Date;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ public class ExpenseLimit extends BaseModel {
   private Integer limitAmount;
   private Date limitDate;
   @ManyToOne
-  private User userID;
+  private UserData userID;
   @ManyToOne
   private BankAccount bankAccountID;
 }
