@@ -15,6 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public interface UserResource {
 
-  @PostMapping("/registry")
+  @PostMapping
   CompletableFuture<ResponseEntity<ApiResponse>> signUp(@Valid @RequestBody SignUpRequest request, HttpServletRequest httpServletRequest);
 }

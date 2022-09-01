@@ -23,7 +23,7 @@ public class CreateUserUseCaseTest {
   private UserRepository userRepository;
 
   @Test
-  public void shouldThrowAlreadyRegistryEmail(){
+  public void shouldThrowEmailAlreadyTaken(){
     //given
     CreateUserUseCase.InputValues inputValues = new CreateUserUseCase.InputValues("test",
         "lastName", "username",
